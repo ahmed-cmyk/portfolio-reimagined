@@ -1,0 +1,11 @@
+version: "2"
+
+sql:
+  - engine: "sqlite"
+    schema: "db/schema.sql"       # We'll move your schema here
+    queries: "db/query.sql"       # And your queries here
+    gen:
+      go:
+        package: "db"             # Package name for generated Go code
+        out: "db"                 # Output folder for generated Go code
+
