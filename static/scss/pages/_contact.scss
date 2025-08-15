@@ -8,6 +8,11 @@
     max-width: 600px;
     margin: 0 auto 1rem auto; // Center and add some bottom margin
     text-align: center; // Center text
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      font-size: 1.5rem; // Smaller title on mobile
+      margin-bottom: 0.5rem;
+    }
   }
 
   .contact-content {
@@ -16,6 +21,10 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap; // Allow wrapping on smaller screens
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      gap: 1rem; // Smaller gap on mobile
+    }
   }
 
   .contact-form {
@@ -25,6 +34,12 @@
     padding: 2rem;
     border-radius: palette.$radius;
     box-shadow: palette.$shadow;
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      min-width: unset; // Allow form to shrink
+      width: 90%; // Take up most of the width
+      padding: 1.5rem; // Adjust padding
+    }
 
     .form-group {
       margin-bottom: 1.5rem;
@@ -93,6 +108,11 @@
     min-width: 300px; // Ensure image doesn't get too small
     max-width: 500px;
     text-align: center;
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      min-width: unset; // Allow image to shrink
+      width: 90%; // Take up most of the width
+    }
 
     img {
       max-width: 100%;
