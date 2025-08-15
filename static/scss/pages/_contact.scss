@@ -1,0 +1,103 @@
+@use '../_palette';
+@use 'sass:color'; // Import sass:color for color functions
+
+/* Contact Page */
+.contact-page {
+  .contact-page--title,
+  .contact-page--subtitle {
+    max-width: 600px;
+    margin: 0 auto 1rem auto; // Center and add some bottom margin
+    text-align: center; // Center text
+  }
+
+  .contact-content {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; // Allow wrapping on smaller screens
+  }
+
+  .contact-form {
+    flex: 1;
+    min-width: 300px; // Ensure form doesn't get too small
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: palette.$radius;
+    box-shadow: palette.$shadow;
+
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: palette.$color-text;
+        font-weight: 500;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid palette.$color-border;
+        border-radius: palette.$radius;
+        color: palette.$color-text;
+        font-size: 1rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:focus {
+          border-color: palette.$color-accent-blue;
+          box-shadow: 0 0 0 3px rgba(palette.$color-accent-blue, 0.2);
+          outline: none;
+        }
+
+        &::placeholder {
+          color: palette.$color-muted;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+    }
+
+    .submit-button {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      background-color: palette.$color-azure; // Azure color
+      color: white;
+      border: none;
+      border-radius: palette.$radius;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+
+      &:hover {
+        background-color: color.adjust(palette.$color-azure, $lightness: -10%); // Darken on hover
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .contact-image {
+    flex: 1;
+    min-width: 300px; // Ensure image doesn't get too small
+    max-width: 500px;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: palette.$radius;
+    }
+  }
+}

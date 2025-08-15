@@ -9,6 +9,8 @@ import (
 	"os"
 	"os/signal"
 	"time"
+
+	"portfolio_reimagined/components"
 )
 
 const port = 8080
@@ -16,6 +18,12 @@ const port = 8080
 func main() {
 	// router
 	mux := http.NewServeMux()
+
+	mux.HandleFunc("/blog", func(w http.ResponseWriter, r *http.Request) {
+		component := components.BlogPost()
+		component.Render(r.Context(), w)
+	})
+
 	mux.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
 	})
