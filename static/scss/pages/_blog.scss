@@ -1,0 +1,40 @@
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.bento-item {
+  background-color: rgba(109, 142, 160, 0.1); // Air force blue with transparency
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px); // Glassy effect
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h3 {
+    margin-top: 0;
+    color: var(--color-text); // Assuming a text color variable
+  }
+
+  p {
+    color: var(--color-secondary); // Assuming a secondary text color variable
+    flex-grow: 1;
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-link); // Assuming a link color variable
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
