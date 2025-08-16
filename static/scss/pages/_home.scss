@@ -1,0 +1,96 @@
+@use '../palette';
+
+/* Hero Section */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+  background: url("../images/hero_code.png") center/cover no-repeat;
+  overflow: hidden;
+
+  &-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3); /* Dark overlay */
+    backdrop-filter: blur(4px); /* Optional blur */
+    z-index: 0; /* Make sure it stays behind text */
+  }
+
+  &--title {
+    font-family: palette.$font-mono;
+    font-size: 2.5rem;
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      font-size: 1.8rem; // Smaller font size on mobile
+    }
+  }
+
+  &--subtitle {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-top: 1rem;
+    opacity: 0.85;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      font-size: 1rem; // Smaller font size on mobile
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    z-index: 1;
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      flex-direction: column; // Stack buttons vertically
+      gap: 0.5rem;
+    }
+
+    a.button {
+      padding: 0.75rem 1.5rem;
+      border: 1px solid palette.$color-off-white-secondary;
+      color: palette.$color-off-white-secondary;
+      border-radius: palette.$radius;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: palette.$fs-sm;
+      transition: all 0.2s ease;
+      text-decoration: none; // Remove underline from links
+      display: inline-block; // Ensure padding and width work as expected
+      text-align: center; // Center text within the button
+
+      &:hover {
+        background-color: palette.$color-blue-hover;
+        color: palette.$color-off-white;
+        border-color: palette.$color-air-force-blue;
+      }
+
+      &.primary {
+        background-color: palette.$color-azure;
+        color: white;
+        border-color: palette.$color-azure;
+
+        &:hover {
+          background-color: palette.$color-air-force-blue;
+          border-color: palette.$color-air-force-blue;
+        }
+      }
+    }
+  }
+}
