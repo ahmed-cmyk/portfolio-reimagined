@@ -1,0 +1,130 @@
+@use '../_palette';
+
+/* Header */
+.portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: palette.$space-md palette.$space-sm;
+  font-size: 0.75rem;
+  color: palette.$color-text;
+  position: relative; // Needed for absolute positioning of nav on mobile
+
+  @media (max-width: palette.$breakpoint-mobile) {
+    flex-direction: row; // Keep logo and burger on one row
+    padding: palette.$space-sm; // Smaller padding on mobile
+    text-align: left; // Align title to left
+  }
+
+  &__title-link {
+    text-decoration: none;
+    color: inherit; // To ensure the color is inherited from the h1
+  }
+
+  &__title {
+    font-family: palette.$font-mono;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      font-size: 1rem; // Smaller font size on mobile
+      margin-bottom: 0; // Remove bottom margin
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center; /* vertical center */
+    gap: 0.5rem;
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      flex-direction: column; // Stack links vertically
+      gap: 1rem; // Increased gap for full-page menu
+      position: fixed; // Fixed position for full page
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; // Full height
+      background-color: palette.$color-bg; // Background for the dropdown menu
+      padding: palette.$space-lg; // More padding for full-page menu
+      box-shadow: none; // No box shadow for full-page
+      justify-content: center; // Center content vertically
+      align-items: center; // Center content horizontally
+      display: none; // Hidden by default
+      &.open {
+        display: flex; // Show when open
+      }
+    }
+
+    a {
+      font-weight: 500;
+      font-size: palette.$fs-sm;
+      letter-spacing: 0.05em;
+      color: palette.$color-off-white-secondary;
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      padding: 0.25rem 0.5rem; /* consistent click area */
+      border-radius: palette.$radius;
+
+      @media (max-width: palette.$breakpoint-mobile) {
+        font-size: 0.8rem; // Smaller font size for links
+        padding: 0.5rem 1rem; // Larger clickable area
+        width: 100%; // Full width links
+        text-align: center;
+      }
+
+      &.resume {
+        border: 1px solid palette.$color-azure;
+        color: palette.$color-azure;
+
+        &:hover {
+          background-color: palette.$color-azure;
+          color: white;
+          border-color: palette.$color-azure;
+        }
+      }
+
+      &:not(.resume):hover {
+        color: palette.$color-air-force-blue;
+      }
+
+      &.active-link {
+        color: palette.$color-azure;
+        font-weight: 700;
+      }
+    }
+  }
+
+  // Burger menu icon styles
+  &__burger {
+    display: none; // Hidden by default on desktop
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 10; // Ensure it's above other content
+
+    @media (max-width: palette.$breakpoint-mobile) {
+      display: block; // Show on mobile
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: palette.$color-text;
+      margin: 5px 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &.open .bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    &.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    &.open .bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+}
